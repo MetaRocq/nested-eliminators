@@ -1,0 +1,8 @@
+Makefile.rocq.conf
+*.glob
+*.aux
+*.vo*
+*.aux
+*.d
+*.cache
+Makefile.rocq
