@@ -1,0 +1,46 @@
+-arg "-w '-notation-overridden'" -Q ./theories PluginNestedElim -Q ./examples examples
+# -arg "-w '-notation-overridden'" -Q ./examples examples
+# -arg "-output-directory ."
+
+# Examples
+examples/Lemma.v
+examples/Positivity_condition.v
+examples/Nested_to_mutual.v
+examples/RoseTree.v
+examples/typing.v
+
+# API
+theories/API/core.v
+theories/API/fold_functions.v
+theories/API/debug_functions.v
+# API: inductive
+theories/API/inductive_access.v
+theories/API/inductive_store.v
+# API: context
+theories/API/context_access.v
+theories/API/context_store.v
+# API: create terms
+theories/API/creating_terms.v
+theories/API/read_mode_ind.v
+theories/API/decide.v
+# API: views
+theories/API/view_args.v
+# API: All
+theories/API/api_debruijn.v
+
+# Preproccess data
+theories/Preprocess/uniform_parameters.v
+theories/Preprocess/strictly_positive_uniform_parameters.v
+
+# Eliminators
+theories/Eliminators/eliminators.v
+
+# Custom Parametricity
+theories/SparseParametricity/sparse_parametricity_rec_hyp.v
+theories/SparseParametricity/sparse_parametricity.v
+theories/SparseParametricity/local_fundamental_lemma.v
+
+# Tests
+theories/test_functions.v
+theories/examples_submission.v
+
