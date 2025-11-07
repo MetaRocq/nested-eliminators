@@ -1,8 +1,8 @@
-From PluginNestedElim Require Import core.
-From PluginNestedElim Require Import fold_functions.
-From PluginNestedElim Require Import inductive_access.
-From PluginNestedElim Require Import context_access.
-From PluginNestedElim Require Import context_store.
+From MetaRocq.NestedElim Require Import core.
+From MetaRocq.NestedElim Require Import fold_functions.
+From MetaRocq.NestedElim Require Import inductive_access.
+From MetaRocq.NestedElim Require Import context_access.
+From MetaRocq.NestedElim Require Import context_store.
 
 (* Interface to create terms
 

@@ -1,7 +1,7 @@
 From MetaRocq.Utils Require Import utils.
 From MetaRocq.Template Require Import All.
 
-From PluginNestedElim Require Import test_functions.
+From MetaRocq.NestedElim Require Import test_functions.
 
 Unset Elimination Schemes.
 Unset MetaRocq Strict Unquote Universe Mode.

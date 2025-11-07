@@ -1,5 +1,5 @@
-From PluginNestedElim Require Import core.
-From PluginNestedElim Require Import fold_functions.
+From MetaRocq.NestedElim Require Import core.
+From MetaRocq.NestedElim Require Import fold_functions.
 
 
 (* Add terms to state

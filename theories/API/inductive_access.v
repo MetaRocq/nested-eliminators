@@ -1,4 +1,4 @@
-From PluginNestedElim Require Import core.
+From MetaRocq.NestedElim Require Import core.
 
 (* Access the inductive type
 - get_pdecl        : kername -> state -> state_pdecl

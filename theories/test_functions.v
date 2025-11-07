@@ -1,23 +1,23 @@
-From PluginNestedElim Require Export api_debruijn.
+From MetaRocq.NestedElim Require Export api_debruijn.
 
 From MetaRocq.Utils Require Export utils.
 From MetaRocq.Template Require Export All.
 From MetaRocq.Template Require Import Pretty.
 
 (* Preprocessing *)
-From PluginNestedElim Require Import uniform_parameters.
-From PluginNestedElim Require Import strictly_positive_uniform_parameters.
+From MetaRocq.NestedElim Require Import uniform_parameters.
+From MetaRocq.NestedElim Require Import strictly_positive_uniform_parameters.
 
 (* Generation of Recursors *)
-From PluginNestedElim Require Import eliminators.
+From MetaRocq.NestedElim Require Import eliminators.
 
 (* Generation of Functoriality *)
-(* From PluginNestedElim Require Import functoriality. *)
-(* From PluginNestedElim Require Import recursor_term. *)
+(* From MetaRocq.NestedElim Require Import functoriality. *)
+(* From MetaRocq.NestedElim Require Import recursor_term. *)
 
 (* Generation of Parametricity *)
-From PluginNestedElim Require Import sparse_parametricity.
-From PluginNestedElim Require Import local_fundamental_lemma.
+From MetaRocq.NestedElim Require Import sparse_parametricity.
+From MetaRocq.NestedElim Require Import local_fundamental_lemma.
 
 
 From MetaRocq.Utils Require Import monad_utils.

@@ -1,5 +1,5 @@
-From PluginNestedElim Require Import core.
-From PluginNestedElim Require Import context_store.
+From MetaRocq.NestedElim Require Import core.
+From MetaRocq.NestedElim Require Import context_store.
 
 (* Get and check functions for the context
 

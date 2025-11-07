@@ -42,5 +42,5 @@ theories/SparseParametricity/local_fundamental_lemma.v
 
 # Tests
 theories/test_functions.v
-theories/formalization_submission.v
+theories/examples.v
 

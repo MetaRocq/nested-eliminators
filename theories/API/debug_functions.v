@@ -1,4 +1,4 @@
-From PluginNestedElim Require Import core.
+From MetaRocq.NestedElim Require Import core.
 
   (* Functions to help debug *)
   (*

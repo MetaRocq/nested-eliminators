@@ -19,7 +19,7 @@
 
 
 (* 1. Core  *)
-From PluginNestedElim Require Export core.
+From MetaRocq.NestedElim Require Export core.
 (*
 - state : Type
 - init_state : state
@@ -33,7 +33,7 @@ From PluginNestedElim Require Export core.
 
 
 (* 2. General Purposed Fold Functions *)
-From PluginNestedElim Require Export fold_functions.
+From MetaRocq.NestedElim Require Export fold_functions.
 (*
 - fold_right_state : {A B X state} : (nat -> A -> state -> (X -> state -> B) -> B)
   -> list A -> state -> (list X -> state -> B) -> B
@@ -50,7 +50,7 @@ From PluginNestedElim Require Export fold_functions.
 
 
 (* 3.Functions to help debug *)
-From PluginNestedElim Require Export debug_functions.
+From MetaRocq.NestedElim Require Export debug_functions.
 (*
 - show_state : state -> string
 - state_to_term : state -> term
@@ -59,7 +59,7 @@ From PluginNestedElim Require Export debug_functions.
 
 
 (* 4. Access the inductive type *)
-From PluginNestedElim Require Export inductive_access.
+From MetaRocq.NestedElim Require Export inductive_access.
 (*
 - get_pdecl : kername -> state -> state_pdecl
 - get_uparams     : kername -> state -> context
@@ -81,7 +81,7 @@ From PluginNestedElim Require Export inductive_access.
 
 
 (* 5. Add inductive types to state *)
-From PluginNestedElim Require Export inductive_store.
+From MetaRocq.NestedElim Require Export inductive_store.
 (*
 - add_mdecl : kername -> nat -> mutual_inductive_body -> state -> state
 *)
@@ -89,7 +89,7 @@ From PluginNestedElim Require Export inductive_store.
 
 
 (* 6. Acces the context *)
-From PluginNestedElim Require Export context_access.
+From MetaRocq.NestedElim Require Export context_access.
 (*
 1. Access the context by ident
 -----------------------------------------------------------------
@@ -131,7 +131,7 @@ check_ids  : nat -> list ident -> state -> bool
 
 
 (* 7. Add terms to state *)
-From PluginNestedElim Require Export context_store.
+From MetaRocq.NestedElim Require Export context_store.
 (*
 - notation: "let* x .. z ':=' c1 'in' c2"
 - fresh_ident : option ident -> state -> ident
@@ -147,7 +147,7 @@ From PluginNestedElim Require Export context_store.
 
 
 (* 8. Interface to create terms *)
-From PluginNestedElim Require Export creating_terms.
+From MetaRocq.NestedElim Require Export creating_terms.
 (*
 
   1. Functions for building inductive types
@@ -204,11 +204,11 @@ Context (kname : kername) (pos_indb : nat) (indb : one_inductive_body)
 
 
 (* Read Interface for Inductives *)
-From PluginNestedElim Require Export read_mode_ind.
+From MetaRocq.NestedElim Require Export read_mode_ind.
 
 
 (* 9. Interface to decide properties *)
-From PluginNestedElim Require Export decide.
+From MetaRocq.NestedElim Require Export decide.
 (*
 Context {A : Type} (bop : A -> A -> A) (default : A)
         (E : global_env) (kname : kername)
@@ -221,7 +221,7 @@ Context {A : Type} (bop : A -> A -> A) (default : A)
 *)
 
 (* 10 Views to match on arguments *)
-From PluginNestedElim Require Export view_args.
+From MetaRocq.NestedElim Require Export view_args.
 
 
 (*

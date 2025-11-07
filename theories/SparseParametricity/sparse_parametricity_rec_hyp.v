@@ -1,4 +1,4 @@
-From PluginNestedElim Require Import api_debruijn.
+From MetaRocq.NestedElim Require Import api_debruijn.
 
 (*
 1. Instiates Parametricity with rec call

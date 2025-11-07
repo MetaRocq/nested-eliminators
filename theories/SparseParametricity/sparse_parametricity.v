@@ -1,5 +1,5 @@
-From PluginNestedElim Require Import api_debruijn.
-From PluginNestedElim Require Import sparse_parametricity_rec_hyp.
+From MetaRocq.NestedElim Require Import api_debruijn.
+From MetaRocq.NestedElim Require Import sparse_parametricity_rec_hyp.
 
 Section SparseParametricity.
 

@@ -1,6 +1,6 @@
-From PluginNestedElim Require Import core.
-From PluginNestedElim Require Import inductive_access inductive_store.
-From PluginNestedElim Require Import context_access context_store.
+From MetaRocq.NestedElim Require Import core.
+From MetaRocq.NestedElim Require Import inductive_access inductive_store.
+From MetaRocq.NestedElim Require Import context_access context_store.
 
 Definition find_bool {A} (p : A -> bool) (l : list A) : nat * bool :=
 let fix aux n l :=

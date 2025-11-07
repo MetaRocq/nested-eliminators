@@ -1,4 +1,4 @@
-From PluginNestedElim Require Import core.
+From MetaRocq.NestedElim Require Import core.
 
 (* Add Inductive Types
 - add_mdecl : kername -> nat -> mutual_inductive_body -> state -> state
