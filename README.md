@@ -1,6 +1,6 @@
 # Generating Eliminators for Rocq Inductive Types 
 
-This repository implements a framework for **automatically generating eliminators** (recursion and elimination principles) for inductive types in **Rocq**, with a focus on **nested inductive types**. The implementation builds on **MetaCoq** and extends Rocq’s capabilities by addressing guard condition limitations and enabling sparse parametricity.
+This repository implements a framework for **automatically generating eliminators** (recursion and elimination principles) for inductive types in **Rocq**, with a focus on **nested inductive types**. The implementation builds on **MetaRocq** and extends Rocq’s capabilities by addressing guard condition limitations and enabling sparse parametricity.
 
 ## ✨ Key Features
 
@@ -34,7 +34,7 @@ This repository implements a framework for **automatically generating eliminator
 
 ## 🚀 Usage
 
-See `plugin_nested_eliminators/examples_submission.v` for usage.
+See `plugin_nested_eliminators/examples.v` for usage.
 
 ## 🧪 Formalization 
 
