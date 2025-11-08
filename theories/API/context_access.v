@@ -167,14 +167,14 @@ Definition reduce_lets : state -> term -> term :=
 
 Definition reduce_except_lets :  global_env -> state -> term -> term :=
   fun E s t =>
-  match reduce_opt noiota_flags E (newc s) 5000 t with
-  | Some t => t
+  match reduce_stack noiota_flags E (newc s) 5000 t [] with
+  | Some t => zip t
   | None => tVar "ERREUR REDUCTION"
   end.
 
 Definition reduce_full : global_env -> state -> term -> term :=
   fun E s t =>
-  match reduce_opt default E (newc s) 5000 t with
-  | Some t => t
+  match reduce_stack default E (newc s) 5000 t [] with
+  | Some t => zip t
   | None => tVar "ERREUR REDUCTION"
   end.
