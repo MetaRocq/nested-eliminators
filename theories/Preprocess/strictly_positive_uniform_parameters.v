@@ -57,7 +57,7 @@ Section SparseParametricity.
     let red_ty := reduce_full E init_state decl.(decl_type) in
     let (_, t) := decompose_prod red_ty in
     match t with
-    tSort (sType _) => true | _ => false end in
+    tSort _ => true | _ => false end in
   map isType uparams.
 
   Definition all_false : list bool := repeat false nb_uparams.
