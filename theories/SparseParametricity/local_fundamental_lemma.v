@@ -35,14 +35,14 @@ Section FdTheorem.
             let cxt := rev (map2 (fun an ty => mkdecl an None ty) ans tys) in
             let name := name_map (fun x => "P" ^ x) an.(binder_name) in
             let ty_pred := (
-              let* s key_lc := closure_context tProd s (Some "locals") cxt in
+              let* s key_lc := make_context tProd s (Some "locals") cxt in
               tProd (mkBindAnn nAnon Relevant) (mkApps (get_term s key_uparam) (get_terms s key_lc)) U.(out_univ)
             ) in
             let* s key_pred := mk_binder binder s (Some "preds") (mkBindAnn name Relevant) ty_pred in
             (* add it holds *)
             let nameHP := name_map (fun x => ("HP" ^ x)) an.(binder_name) in
             let ty_pred_holds := (
-              let* s key_lc := closure_context tProd s (Some "locals") cxt in
+              let* s key_lc := make_context tProd s (Some "locals") (lift_context 1 0 cxt) in
               let name := name_map (fun x => "p" ^ x) an.(binder_name) in
               let* s key_varPred := mk_tProd s (Some "app_loc") (mkBindAnn name Relevant) (mkApps (get_term s key_uparam) (get_terms s key_lc)) in
               (mkApps (get_term s key_pred) (get_terms s key_lc ++ [get_term s key_varPred]))

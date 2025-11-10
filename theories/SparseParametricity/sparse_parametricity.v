@@ -49,7 +49,7 @@ Definition closure_uparams_preds : state -> (state -> keys -> keys -> keys -> te
           let name := name_map (fun x => "P" ^ x) an.(binder_name) in
           (* type *)
           let ty_pred := (
-            (let* s key_lc := closure_context tProd s (Some "locals") cxt in
+            (let* s key_lc := make_context tProd s (Some "locals") cxt in
             tProd (mkBindAnn nAnon Relevant) (mkApps (get_term s key_uparam) (get_terms s key_lc)) U.(out_univ))
           ) in
         let* s key_pred := mk_tProd s (Some "preds") (mkBindAnn name Relevant) ty_pred in
@@ -102,7 +102,7 @@ Definition closure_uparams_preds : state -> (state -> keys -> keys -> keys -> te
             let name := name_map (fun x => "P" ^ x) an.(binder_name) in
             (* type *)
             let ty_pred := (
-              (let* s key_lc := closure_context tProd s (Some "locals") cxt in
+              (let* s key_lc := make_context tProd s (Some "locals") cxt in
               tProd (mkBindAnn nAnon Relevant) (mkApps (get_term s key_uparam) (get_terms s key_lc)) U.(out_univ))
             ) in
             let* s key_pred := add_fresh_var s (Some "preds") (mkBindAnn name Relevant) ty_pred in
@@ -172,9 +172,10 @@ Definition custom_param : mutual_inductive_entry :=
   (* add inds to state *)
   let s := add_mdecl kname nb_uparams mdecl init_state in
   let annoted_uparams := combine (rev (get_uparams s kname)) strpos_uparams in
-  (* Add new inds, uprams and pred, nuparams *)
+  (* Add new inds, uparams and pred, nuparams *)
   let* s := subst_ind s kname in
   let* s _ key_inds _ := add_fresh_context s (Some "inds") (make_new_context annoted_uparams s) in
+  (* uparams + nuparams *)
   let* s key_uparams key_preds key_uparams_preds := add_uparams_preds annoted_uparams s in
   let* s _ key_nuparams _ := add_old_context s (Some "nuparams") (get_nuparams s kname) in
   (* get the context associated to the (new) parameters *)

@@ -1,6 +1,6 @@
 From MetaRocq.NestedElim Require Export api_debruijn.
 
-From MetaRocq.Utils Require Export utils Show. 
+From MetaRocq.Utils Require Export utils Show.
 From MetaRocq.Template Require Export All.
 From MetaRocq.Template Require Import Pretty.
 
@@ -81,7 +81,7 @@ Definition cst_of_gref (kn : global_reference) : TemplateMonad _ :=
 
 Definition getCst (q : qualid) (b : bool) : TemplateMonad constant_body :=
   kn <- tmLocate1 q ;; cst_of_gref kn.
-  
+
 Definition getCstBody (q : qualid) b : TemplateMonad (option term) :=
   x <- (getCst q b) ;;
   ret x.(cst_body).
@@ -131,7 +131,7 @@ Definition pp_printCstType (q : qualid) b : TemplateMonad unit :=
   | StopTests    : TestMode.
     Definition print_rec_options (debug_rec_type debug_rec_term debug_cparam : bool) (m : TestMode) (q : qualid) :=
     match m with
-    | TestRecType => 
+    | TestRecType =>
       if debug_rec_type then printCstType (q ^ "_ind") true else pp_printCstType (q ^ "_ind") true
     | TestRecTerm => if debug_rec_term then printCstBody (q ^ "_ind") true else pp_printCstBody (q ^ "_ind") true
     | TestSparseParam  => if debug_cparam then printCstBody  (q ^ "_param1_term") true else pp_printMdecl (q ^ "_param1")
@@ -187,7 +187,7 @@ Unset Printing Notations.
     (* strpos <- tmEval lazy (preprocess_strpos kname mdecl nb_uparams E Ep) ;; *)
     (* type_uparams <- tmEval lazy (firstn nb_uparams (rev (map decl_type mdecl.(ind_params)))) ;; *)
     let q := snd kname in
-    tmBind (B := unit) (GetKname (q ^ "ₛ")) (fun _ : kername => 
+    tmBind (B := unit) (GetKname (q ^ "ₛ")) (fun _ : kername =>
     (* cparam_kname <- tmEval lazy cparam_kname;; *)
     (* fdt_kname <- GetKname ("lfl_" ^ q ^ "ₛ") ;; *)
     (* fdt_kname <- tmEval lazy fdt_kname;; *)
@@ -203,7 +203,7 @@ Definition get_paramEp {A} (s : A) (Ep : param_env) : TemplateMonad unit :=
   ' (E, tm) <- tmQuoteRecTransp s false ;;
   let ' (hd, iargs) := decompose_app tm in
   match hd with
-  | tInd (mkInd kname ind_pos) _ => 
+  | tInd (mkInd kname ind_pos) _ =>
     mdecl <- ind_of_kn E kname ;;
     mdeck <- tmEval lazy mdecl ;;
     nb_uparams <- tmEval lazy (preprocess_uparams kname mdecl E) ;;
@@ -254,7 +254,7 @@ Section TestFunctions.
            let debug_uparam := debug_preprocess_uparams kname mdecl E in
            tmPrint debug_uparams
       (* 2.2 Compute Strictly Positive Uniform Parameters *)
-      else 
+      else
       strpos_uparams <- tmEval lazy (preprocess_strpos kname mdecl nb_uparams E Ep) ;;
       if debug_strpos
       then tmPrint strpos_uparams ;;
