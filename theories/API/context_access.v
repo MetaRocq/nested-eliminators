@@ -160,17 +160,46 @@ Definition check_keys : state -> keys -> nat -> bool :=
 From MetaRocq Require Import Template.Checker.
 Import RedFlags.
 
-#[local] Definition noiota_flags := mk true true false true true true.
+#[local] Definition nozeta_flags := mk true true false true true true.
 
 Definition reduce_lets : state -> term -> term :=
   fun s t => expand_lets (newc s) t.
 
 Definition reduce_except_lets :  global_env -> state -> term -> term :=
   fun E s t =>
-  match reduce_stack noiota_flags E (newc s) 5000 t [] with
+  match reduce_stack nozeta_flags E (newc s) 5000 t [] with
   | Some t => zip t
   | None => tVar "ERREUR REDUCTION"
   end.
+
+
+Definition isInd (t : term) : bool :=
+  match t with
+  | tInd _ _ => true
+  | _ => false
+  end.
+
+(** Reduce a type so that the inductive structure is apparent.
+  Strategy: take the hnf [t'] of a term [t], if it starts with tInd, 
+  recursively compute the inductive structure, 
+  otherwise return [t].
+*)
+Fixpoint reduce_inds_fuel n (Σ : global_env) Γ (t : term) : term := 
+  match n with
+  | 0 => t
+  | S n =>
+    match reduce_stack default Σ Γ n t [] with
+    | Some c' =>
+      let hd := c'.1 in
+      if isInd hd then
+        (map_constr_with_binders Σ (fun Γ t => reduce_inds_fuel n Σ Γ t) Γ (zip c'))
+      else t
+    | None => t
+    end
+  end.
+
+Definition reduce_inds : global_env -> state -> term -> term :=
+  fun E s t => reduce_inds_fuel 5000 E (newc s) t.
 
 Definition reduce_full : global_env -> state -> term -> term :=
   fun E s t =>

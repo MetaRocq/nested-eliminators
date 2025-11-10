@@ -193,3 +193,6 @@ Record foo A := mk_foo {
 MetaRocq Run (generate_sparse_parametricty [] sProp foo).
 
 Print fooₛ.
+
+MetaRocq Run (generate_sparse_parametricty [] sProp sigT).
+

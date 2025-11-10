@@ -153,7 +153,7 @@ Section GenTypes.
   (* 1.2.1 Generates the type associated to an argument *)
   Definition type_arg_cc : state -> nat -> key -> (state -> keys -> term) -> term :=
     fun s _ key_arg cc =>
-    let red_ty := reduce_full E s (get_type s key_arg) in
+    let red_ty := reduce_inds E s (get_type s key_arg) in
     match make_rec_call s key_arg red_ty with
     | Some (ty, _) => mk_tProd s (Some "rec_call") (mkBindAnn nAnon Relevant) ty
                         (fun s key_rec => cc s [key_arg] )
@@ -248,7 +248,7 @@ Section GetRecCall.
   Definition compute_args_fix : keys -> list term :=
     fun key_args =>
     fold_right (fun key_arg t =>
-      let red_ty := reduce_full E s (get_type s key_arg) in
+      let red_ty := reduce_inds E s (get_type s key_arg) in
       match make_rec_call key_preds key_fixs s key_arg red_ty with
       | Some (rc_ty, rc_tm) => (get_term s key_arg) :: rc_tm :: t
       | None => (get_term s key_arg) :: t

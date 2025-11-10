@@ -28,7 +28,7 @@ Definition check_args_by_arg : state -> (state -> term -> A) -> context -> A :=
     ( fun s i ' (mkdecl an z ty) cc =>
         match z with
         | None => let* s key_arg := add_old_var s (Some "arg") an ty in
-                  let rty := reduce_full E s (get_type s key_arg) in
+                  let rty := reduce_inds E s (get_type s key_arg) in
                   bop (check_arg s rty) (cc s key_arg)
         | Some db => let* s key_let := add_old_letin s (Some "letin") an db ty in
                      cc s key_let
