@@ -30,6 +30,7 @@ Section MkRecCall.
 Context (make_indp : state -> nat -> keys -> list term -> list term -> term).
 Context (kname : kername).
 Context (strpos_uparams : list bool).
+Context (E : global_env).
 Context (Ep : param_env).
 Context (s : state).
 Context (key_inds          : keys).
@@ -41,7 +42,7 @@ Context (key_fixs          : keys).
 
 
 Fixpoint make_cparam_call_aux (s : state) (key_arg : key) (ty : term) {struct ty} : option (term * term) :=
-  match view_uparams_args s kname Ep key_inds key_uparams strpos_uparams ty with
+  match view_uparams_args s kname E Ep key_inds key_uparams strpos_uparams ty with
   | SPArgIsSPUparam pos_uparams loc iargs  =>
     let deb := (String.concat " | " (map string_of_nat key_preds_hold)) ^ " || " ^ (string_of_nat pos_uparams) in
     (* Some (tVar deb, tVar deb) *)

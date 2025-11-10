@@ -73,7 +73,7 @@ Print Allₛ.
 Print lfl_Allₛ.
 
 (* It needs to know the strictly postive uniform parameters of list
-   to compute striclty postive uniform parameters for All *)
+  to compute striclty postive uniform parameters for All *)
 MetaRocq Run (get_paramEp ( @All ) [kmp_list]).
 
 (* generate the nested eliminator *)
@@ -81,7 +81,6 @@ MetaRocq Run (generate_elim [kmp_list; kmp_All] "typing_elim" sProp typing).
 
 Check typing_elim.
 Print typing_elim.
-
 
 
 
@@ -196,3 +195,21 @@ Print fooₛ.
 
 MetaRocq Run (generate_sparse_parametricty [] sProp sigT).
 
+
+(* Reduction *)
+Module Red.
+  Inductive typing (Σ : global_env_ext) (Γ : context) : Ast.term -> Ast.term -> Type :=
+  | type_Prod : forall (na : aname) (t b : Ast.term) (s1 : sort),
+                lift_typing typing Σ Γ (TypUniv t s1) ->
+                typing Σ Γ (tProd na t b) (tSort s1).
+
+  MetaRocq Run (generate_sparse_parametricty [] sProp sigT).
+  MetaRocq Run (get_paramEp sigT []).
+
+  Existing Instance config.strictest_checker_flags.
+  MetaRocq Run (generate_elim [kmp_prod; kmp_sigT] "typing_elim" sProp typing).
+
+
+  Definition typing_myrec Σ Γ P := typing_elim Σ Γ  (fun a b _ => P a b).
+  Check typing_myrec.
+End Red.

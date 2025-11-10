@@ -18,6 +18,7 @@ Section ViewArgs.
 
 Context (s : state).
 Context (kname : kername).
+Context (E : global_env).
 Context (Ep : param_env).
 
 (*
@@ -36,7 +37,6 @@ Inductive VArg :=
                   (inst_uparams inst_nuparams_indices type_uparams : list term), VArg
 | VArgIsFree    : forall (local : context) (hd : term) (iargs : list term), VArg.
 
-
 (* Set to [] is the inductive have been substituted for tInd *)
 Context (key_inds : keys).
 
@@ -50,8 +50,9 @@ Definition instante_types (types : list term) (inst : list term) : list term :=
 
 
 #[local] Fixpoint view_args_aux (local : context) (matched : term) {struct matched} : VArg :=
+  let matched := reduce_full E s matched in
   let (hd, iargs) := decompose_app matched in
-  match hd with
+  match reduce_full E s hd with
   | tProd an A B     => if #|iargs| =? 0
                         then view_args_aux (local ,, vass an A) B
                         else VArgIsFree local hd iargs

@@ -102,7 +102,7 @@ Section GenTypes.
 
 
   Program Fixpoint make_rec_call (s : state) (key_arg : key) (ty : term) {struct ty} : option (term * term) :=
-    match view_args s kname Ep [] ty with
+    match view_args s kname E Ep [] ty with
     | VArgIsFree _ _ _ => None
     | VArgIsInd pos_indb loc local_nuparams local_indices =>
               (* Pi B0 ... Bm i0 ... il (x a0 ... an) *)
@@ -135,6 +135,7 @@ Section GenTypes.
       let* s _ key_locals _ := add_old_context s (Some "local") loc in
       (* compute rec call *)
       let rec_call := mapi (fun i x => compute_nested_rc s i x) local_uparams in
+      (* Some (tVar "DEBUG", tVar "DEBUG") *)
       if existsb isSome rec_call
         (* If some instatiate the parametricty  *)
       then let (lty, ltm) := add_param xp.(ep_strpos_uparams) local_uparams rec_call in
