@@ -6,7 +6,6 @@ From MetaRocq.NestedElim Require Import test_functions.
 Unset Elimination Schemes.
 Unset MetaRocq Strict Unquote Universe Mode.
 
-
 (* There are two functions:
 - generate_sparse_parametricty : ∀ {A : Type}, param_env → sort → A → TemplateMonad unit that given
   - a list of information about types used for nesting, like strictly uniform parameters,
@@ -213,3 +212,9 @@ Module Red.
   Definition typing_myrec Σ Γ P := typing_elim Σ Γ  (fun a b _ => P a b).
   Check typing_myrec.
 End Red.
+
+MetaRocq Run (generate_sparse_parametricty [kmp_list] sProp ( @All2i)).
+Check All2iₛ.
+
+MetaRocq Run (generate_sparse_parametricty [] sProp All_local_env).
+Print All_local_envₛ.
