@@ -7,7 +7,6 @@ This repository implements a framework for **automatically generating eliminator
 * 🔧 **Automatic generation** of eliminators for nested and mutual inductive types.
 * 📦 Based on **MetaRocq** and integrated with **Rocq**’s sort polymorphism and elimination constraints.
 * 🧠 Supports **sparse parametricity**, minimizing unnecessary hypotheses.
-* 📐 Handles **guard conditions** and ensures generated eliminators are accepted by Rocq’s termination checker.
 
 ## 🛠️ Installation & Setup
 
@@ -26,23 +25,25 @@ This repository implements a framework for **automatically generating eliminator
 
 ## 📁 Project Structure
 
-* `plugin_nested_eliminators/API/`: Generic library for meta-programming on top of MetaRocq.
-* `plugin_nested_eliminators/SparseParametricity/`: Sparse Parametricity generation.
-* `plugin_nested_eliminators/Eliminators/`: Core implementation of recursor generation and elimination logic.
-* `plugin_nested_eliminators/examples_submission.v`: Demonstrations of generated eliminators on standard and nested inductive types.
+* `theories/API/`: Generic library for meta-programming on top of MetaRocq.
+* `theories/SparseParametricity/`: Sparse Parametricity generation.
+* `theories/Eliminators/`: Core implementation of recursor generation and elimination logic.
+* `theories/examples_submission.v`: Demonstrations of generated eliminators on standard and nested inductive types.
 * `formalization/`: Formal proofs verifying the correctness of generated eliminators and termination properties.
 
 ## 🚀 Usage
 
-See `plugin_nested_eliminators/examples.v` for usage.
+See `theories/examples.v` for usage.
 
 ## 🧪 Formalization 
 
 The formalization of the encoding from nested inductive types to mutual inductive types is based on MetaRocq
 
 * `typing.v` and `RoseTree.v`: A running example of a mutually nested inductive type with generated eliminators.
-* `positivity_condition.v`: specify the positivity condition
-* `nested_to_mutual.v`: Verifies that eliminators satisfy Rocq's guard conditions.
+* `positivity_condition.v`: specify the positivity condition.
+* `nested_to_mutual.v`: Defines the mutual encoding of a well-formed nested inductive type.
+* `nested_to_mutual_proof.v`: Verifies that mutual encoding of a well-formed nested inductive type satisfies the strict positivity condition.
+
 
 ## 🧩 Integration with Rocq
 
