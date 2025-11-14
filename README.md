@@ -11,7 +11,7 @@ This repository implements a framework for **automatically generating eliminator
 ## 🛠️ Installation & Setup
 
 1. **Install dependencies**
-   Make sure you have a working installation of Rocq and MetaCoq.
+   Make sure you have a working installation of Rocq and MetaRocq (tested with MetaRocq 1.4+9.0, 1.4+9.0.1 and 1.4+9.1).
 
    ```bash
    opam install rocq rocq-equations rocq-metarocq
