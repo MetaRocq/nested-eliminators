@@ -1,0 +1,31 @@
+opam-version: "2.0"
+version: "dev"
+maintainer: "matthieu.sozeau@inria.fr"
+homepage: "https://metarocq.github.io/metarocq"
+dev-repo: "git+https://github.com/MetaRocq/metarocq.git#main"
+bug-reports: "https://github.com/MetaRocq/metarocq/issues"
+authors: ["Thomas Lamiaux <thomas.lamiaux@etu.univ-nantes.fr>"
+          "Yannick Forster <forster@ps.uni-saarland.de>"
+          "Matthieu Sozeau <matthieu.sozeau@inria.fr>"
+          "Nicolas Tabareau <nicolas.tabareau@inria.fr>"
+]
+license: "MIT"
+build: [
+  [make "-j" "%{jobs}%"]
+]
+install: [
+  [make "install"]
+]
+depends: [
+  "stdlib-shims"
+  "rocq-core"
+  "rocq-stdlib"
+  "rocq-metarocq" { >= "1.4" and != "dev" }
+]
+synopsis: "Derivation of sparse parametricity and nested eliminators for Rocq"
+description: """
+The Nested Eliminators plugin provides a set of functions to generate 
+sparse parametricity predicates and proofs of their local fundamental lemma 
+for inductive types, along with the derivation of (dependent) nested eliminators 
+for mutual and indexed inductive types.
+"""
