@@ -1427,3 +1427,5 @@ Proof.
   split; cbn => //.
   len. rewrite length_nested_to_mutual_indb. apply All_app_inv => //.
 Qed.
+
+Print Assumptions pos_nested_to_mutual.

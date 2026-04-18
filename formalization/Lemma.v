@@ -568,12 +568,11 @@ Definition on_free_vars_impl2 {q1 q2 p : nat -> bool} {t} :
   (forall i, q1 i -> q2 i -> p i) ->
   on_free_vars q1 t -> on_free_vars q2 t -> on_free_vars p t.
 Proof.
-Admitted.
-  (* intros Himpl x y. revert x y Himpl. revert t q1 q2 p.
+  intros Himpl x y. revert x y Himpl. revert t q1 q2 p.
   induction t using PCUICInduction.term_forall_list_ind; simpl => //.
   all:unfold test_def in *; rtoProp => //.
   all:solve_all. all:eauto using shiftnP_impl2.
-Qed. *)
+Qed.
 
 
 (* Strengthening *)

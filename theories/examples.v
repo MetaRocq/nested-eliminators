@@ -140,7 +140,7 @@ Inductive ArrowTree3 A : Type :=
 | ATleaf3 (a : A) : ArrowTree3 A
 | ATnode3 (l : (bool -> list (nat -> ArrowTree3 A))) : ArrowTree3 A.
 
-MetaRocq Run (generate_elim Ep "ArrowTree3_elim" sProp ArrowTree2).
+MetaRocq Run (generate_elim Ep "ArrowTree3_elim" sProp ArrowTree3).
 Check ArrowTree3_elim.
 Print ArrowTree3_elim.
 
