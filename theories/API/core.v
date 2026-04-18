@@ -50,7 +50,7 @@ Definition find_errori {A} (p : A -> bool) (l : list A) (default : A) : nat * A 
 #############################
 
 
-(* 0. Datastructre and General Purposed Functions *)
+(* 0. Datastructure and General Purposed Functions *)
 - state_decl : Type
 - state : Type
 - init_state : state
@@ -73,7 +73,7 @@ Definition find_errori {A} (p : A -> bool) (l : list A) (default : A) : nat * A 
 
 
 
-(* 0. Datastructre *)
+(* 0. Datastructure *)
 Record state_pdecl : Type := mk_pdecl
 { state_kname       : kername ;
   state_uparams     : context ;

@@ -12,7 +12,7 @@ Section PreprocessParameters.
   Definition nb_params := mdecl.(ind_npars).
 
 
-(* Extra functions as we don't know the number of uparams which is neccassary for the api *)
+(* Extra functions as we don't know the number of uparams which is necessary for the api *)
 #[local] Definition get_all_args : mutual_inductive_body -> list context :=
   fun mdelc => map cstr_args (concat (map ind_ctors mdecl.(ind_bodies))).
 

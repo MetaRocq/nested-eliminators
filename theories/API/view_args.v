@@ -29,7 +29,7 @@ Context (Ep : param_env).
 
 *)
 
-(* 1.1 View for arguments where inductive hasn't been subsituted *)
+(* 1.1 View for arguments where inductive hasn't been substituted *)
 Inductive VArg :=
 | VArgIsInd     : forall (pos_indb : nat) (local :context)
                   (local_nuprams local_indices : list term), VArg

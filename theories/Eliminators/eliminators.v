@@ -137,7 +137,7 @@ Section GenTypes.
       let rec_call := mapi (fun i x => compute_nested_rc s i x) local_uparams in
       (* Some (tVar "DEBUG", tVar "DEBUG") *)
       if existsb isSome rec_call
-        (* If some instatiate the parametricty  *)
+        (* If some instantiate the parametricity  *)
       then let (lty, ltm) := add_param xp.(ep_strpos_uparams) local_uparams rec_call in
             Some ( fold_binder tProd loc (
                   mkApp (mkApps (tInd (mkInd xp.(ep_cparam_kname) pos_indb) [])

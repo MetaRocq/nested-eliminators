@@ -7,9 +7,9 @@ Unset Elimination Schemes.
 Unset MetaRocq Strict Unquote Universe Mode.
 
 (* There are two functions:
-- generate_sparse_parametricty : ∀ {A : Type}, param_env → sort → A → TemplateMonad unit that given
+- generate_sparse_parametricity : ∀ {A : Type}, param_env → sort → A → TemplateMonad unit that given
   - a list of information about types used for nesting, like strictly uniform parameters,
-    sparse parametricty and local fundamental lemma for nested case
+    sparse parametricity and local fundamental lemma for nested case
   - the return sort
   - an inductive type
 
@@ -17,10 +17,10 @@ Unset MetaRocq Strict Unquote Universe Mode.
 
 - generate_elim ! ∀ {A : Type}, param_env → ident → sort → A → TemplateMonad unit that given:
   - a list of information about types used for nesting, like strictly uniform parameters,
-    sparse parametricty and local fundamental lemma for nested case
+    sparse parametricity and local fundamental lemma for nested case
   - a name
   - the return sort
-  - an indictive type
+  - an inductive type
 
   Generates the eliminator for the nested inductive type
 *)
@@ -70,8 +70,8 @@ MetaRocq Run (generate_sparse_parametricty [kmp_list] sProp All).
 Print Allₛ.
 Print lfl_Allₛ.
 
-(* It needs to know the strictly postive uniform parameters of list
-  to compute striclty postive uniform parameters for All *)
+(* It needs to know the strictly positive uniform parameters of list
+  to compute strictly positive uniform parameters for All *)
 MetaRocq Run (get_paramEp ( @All ) [kmp_list]).
 
 (* generate the nested eliminator *)

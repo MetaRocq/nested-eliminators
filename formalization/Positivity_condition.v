@@ -28,7 +28,7 @@ Ltac done_gen tac :=
     (* 2. intros ? + assumption + 0 cost hints *)
     | solve [trivial]
     | solve [symmetry; trivial]
-    (* 3. introduces varibales *)
+    (* 3. introduces variables *)
     | progress (hnf; intros)
     (* 4. check for inconsistencies *)
     | contradiction
@@ -406,7 +406,7 @@ Record one_inductive_body := mkViewInd {
 Record mutual_inductive_body := mkViewMut {
   (** Whether the block is inductive, coinductive or non-recursive (Records). *)
   ind_finite : recursivity_kind;
-  (** Context of uniform parameters + if they are strictly postive *)
+  (** Context of uniform parameters + if they are strictly positive *)
   ind_uparams : list (context_decl * bool);
   (** Context of non-uniform parameters *)
   ind_nuparams : context;
@@ -431,7 +431,7 @@ Record mutual_inductive_body := mkViewMut {
 
 (* *** Strict Positivity *** *)
 
-(* To define positivty and handle nested arguments, we suppose given an
+(* To define positivity and handle nested arguments, we suppose given an
    environment and a function to lookup our version of inductives.
    This spares from modifying the definition of environments to our definition.
 
@@ -1104,7 +1104,7 @@ Section PositiveIndBlock.
 
 
 
-  (* A constructor is postive when:
+  (* A constructor is positive when:
      1. All of its arguments are positive
      2. The return indices do not contain the inductives nor the sp_uparams
   *)
@@ -1122,7 +1122,7 @@ Section PositiveIndBlock.
 
 
 (* A inductive body is positive when:
-  - All its constructors are postive
+  - All its constructors are positive
   - The indices do not mention the sp uparams. This restriction is needed to
     ensure that the associated mutual type is not inductive-inductive
   *)
