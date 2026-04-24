@@ -8,7 +8,7 @@
 4. Access the inductive type
 5. Add inductive types to states
 --------------------------------
-6. Acces the context
+6. Access the context
 7. Add terms to states
 --------------------------------
 8. interface to create terms
@@ -88,7 +88,7 @@ From MetaRocq.NestedElim Require Export inductive_store.
 
 
 
-(* 6. Acces the context *)
+(* 6. Access the context *)
 From MetaRocq.NestedElim Require Export context_access.
 (*
 1. Access the context by ident

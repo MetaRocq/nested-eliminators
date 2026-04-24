@@ -205,7 +205,7 @@ Definition leaf' {A} : forall (a : A), RoseTree' A := leaf_mut.
 Definition node' {A} : forall (l : list (RoseTree' A)), RoseTree' A :=
   fun l => node_mut (list_to_listMut l).
 
-(* Nested Recusor Rewrited with RoseTreeMut *)
+(* Nested Recursor Rewritten with RoseTreeMut *)
 
 Lemma RoseTree_elim' A (P : RoseTree' A -> Type) (Pleaf: forall a, P (leaf' a))
    (Pnode : forall l, listϵ _ P l -> P (node' l)) : forall r, P r.

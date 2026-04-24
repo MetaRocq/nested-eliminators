@@ -104,7 +104,7 @@ Proof.
   apply (typing_mut_All_mut_rec P P0 Ptyping_mut_switch P0All_mut_nil P0All_mut_cons).
 Qed.
 
-(* just relabling *)
+(* just relabeling *)
 Definition All_to_All_mut {return_type branches} :
     All (fun a : term => typing_mut a return_type) branches ->
     All_mut return_type branches :=

@@ -93,7 +93,7 @@ Section StrengthArg.
         intros i. unfold shiftnP; cbn.
         repeat case_inequalities => //.
         replace (i - 1 -k) with (i - k - 1) by lia. done.
-    (* branch false => arg is keept *)
+    (* branch false => arg is kept *)
     +
       eassert (all_false : All (fun arg0 : argument => check_lax arg0 = false) (acc.1.2 ++ [rename_argument acc.2 0 arg])).
         { apply All_app_inv => //. repeat constructor => //. rewrite argument_mapi_check_lax //. }
@@ -825,7 +825,7 @@ Section NestedToMutualInd.
       intros x; eapply on_free_vars_subst_eq; only 3: (apply All_rev; mtea); done).
 
   Definition pos_sub_uparams Γ largs args (lax : bool) nb_binders (llargs : list term) (arg : argument)
-    (* contet substitution *)
+    (* context substitution *)
     (pos_largs : Alli (isup_notin g_uparams_b) (nb_g_nuparams + #|Γ| + nb_binders) largs)
     (pos_args  : All  (isup_notin g_uparams_b  (nb_g_nuparams + #|Γ| + nb_binders + #|largs|)) args)
     (* arg to substitute by *)
@@ -1427,3 +1427,5 @@ Proof.
   split; cbn => //.
   len. rewrite length_nested_to_mutual_indb. apply All_app_inv => //.
 Qed.
+
+Print Assumptions pos_nested_to_mutual.

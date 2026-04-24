@@ -1,12 +1,12 @@
 From MetaRocq.NestedElim Require Import api_debruijn.
 
 (*
-1. Instiates Parametricity with rec call
+1. Instantiates Parametricity with rec call
 2. Generates rec call for inductive
 
 *)
 
-(* 1. Instiates Parametricity with rec call *)
+(* 1. Instantiates Parametricity with rec call *)
 Fixpoint add_param (strpos : list bool) (l : list term) (rc : list (option (term * term))) : list term * list term :=
   match strpos, l, rc with
   | nil, nil, nil => (nil , nil)

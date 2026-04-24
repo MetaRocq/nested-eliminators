@@ -269,8 +269,8 @@ Section TestFunctions.
           tm_rec <- tmEval lazy (gen_rec_term kname mdecl nb_uparams U E Ep pos_indb) ;;
           if debug_rec_term then tmPrint tm_rec else UnquoteAndPrint name tm_rec
       | TestSparseParam =>
-          (* Test Generation Custom Parametricty *)
-          tmPrint "Custom Parametricty:" ;;
+          (* Test Generation Custom Parametricity *)
+          tmPrint "Custom Parametricity:" ;;
           mentry <- tmEval lazy (custom_param kname mdecl nb_uparams strpos_uparams U E Ep) ;;
           if debug_cparam then tmPrint mentry else
           tmMkInductive true mentry ;;
